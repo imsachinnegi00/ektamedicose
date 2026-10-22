@@ -1,0 +1,136 @@
+/* Responsive refinements for narrow screens and the supplied wide shop sign. */
+.topline-label-mobile { display: none; }
+
+.stage-photo {
+  display: grid;
+  position: relative;
+  isolation: isolate;
+  place-items: center;
+  padding: 26px;
+  background: radial-gradient(ellipse at 82% 18%, rgba(255,255,255,.9), transparent 36%), linear-gradient(135deg, #edf2ed, #dfe7de 52%, #f5f7f4);
+}
+.stage-photo::before {
+  position: absolute;
+  z-index: -1;
+  top: -155px;
+  right: -58px;
+  width: 390px;
+  height: 390px;
+  border: 1px solid rgba(82,107,85,.16);
+  border-radius: 50%;
+  box-shadow: 0 0 0 22px rgba(82,107,85,.035), 0 0 0 55px rgba(82,107,85,.025);
+  content: "";
+  animation: sign-orbit 26s linear infinite;
+}
+.stage-photo::after {
+  position: absolute;
+  z-index: 3;
+  top: -20%;
+  bottom: -20%;
+  left: -40%;
+  width: 30%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.32), transparent);
+  content: "";
+  pointer-events: none;
+  transform: skewX(-18deg);
+  animation: sign-sheen 8s ease-in-out infinite;
+}
+.stage-photo-label {
+  position: absolute;
+  z-index: 4;
+  top: 17px;
+  left: 18px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  border: 1px solid rgba(82,107,85,.14);
+  background: rgba(255,255,255,.8);
+  color: #526b55;
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: .13em;
+}
+.stage-photo-label i {
+  width: 6px;
+  height: 6px;
+  flex: none;
+  border-radius: 50%;
+  background: #78967a;
+  box-shadow: 0 0 0 4px rgba(120,150,122,.14);
+}
+.stage-sign-frame {
+  position: relative;
+  z-index: 2;
+  width: min(100%, 700px);
+  padding: 9px;
+  border: 1px solid rgba(23,28,24,.13);
+  background: linear-gradient(135deg, #fff, #e8eee7);
+  box-shadow: 0 22px 42px rgba(23,28,24,.16), 0 5px 12px rgba(23,28,24,.08);
+  animation: sign-float 7s ease-in-out infinite;
+}
+.stage-sign-frame img {
+  display: block;
+  width: 100%;
+  height: auto;
+  min-height: 0;
+  object-fit: contain;
+  filter: grayscale(1);
+  background: #e7ece6;
+}
+.home-stage:hover .stage-sign-frame { animation-play-state: paused; transform: translateY(-5px); }
+
+@keyframes sign-float {
+  0%, 100% { transform: translateY(0) rotate(-.45deg); }
+  50% { transform: translateY(-7px) rotate(.45deg); }
+}
+@keyframes sign-orbit { to { transform: rotate(360deg); } }
+@keyframes sign-sheen {
+  0%, 18% { left: -40%; opacity: 0; }
+  28% { opacity: .8; }
+  55%, 100% { left: 120%; opacity: 0; }
+}
+
+.about-photo { background: #e7ece6; }
+.about-grid { grid-template-columns: minmax(0, 1.18fr) minmax(0, .82fr); gap: 54px; }
+
+@media (max-width: 900px) {
+  .about-grid { grid-template-columns: minmax(0, 1fr); gap: 38px; }
+  .about-photo { height: auto; aspect-ratio: 1.8; }
+}
+
+@media (max-width: 700px) {
+  .stage-photo { padding: 24px 16px; }
+  .stage-photo-label { top: 10px; left: 10px; font-size: 7px; }
+  .stage-sign-frame { width: 100%; padding: 6px; }
+  .topline .container { width: calc(100% - 20px); }
+  .topline-inner { gap: 8px; }
+  .topline-label-desktop { display: none !important; }
+  .topline-label-mobile { display: block; flex: none; font-size: 9px; white-space: nowrap; }
+  .topline-inner > div { display: flex; flex: none; align-items: center; white-space: nowrap; font-size: 8px; }
+}
+
+@media (max-width: 480px) {
+  .home-intro h1 { font-size: clamp(30px, 9.1vw, 36px); letter-spacing: -.065em; }
+  .rotating-word { min-width: 0; }
+  .about-photo { aspect-ratio: 1.6; }
+  .footer-main { grid-template-columns: minmax(0, 1fr); gap: 22px; }
+  .footer-brand { grid-column: auto; }
+  .footer-main > div:not(:first-child) { width: 100%; }
+  .location-inner { flex-direction: column; gap: 27px; }
+  .location-mark { width: min(100%, 245px); height: 125px; margin-top: 0; }
+}
+
+@media (max-width: 340px) {
+  .topline .container { width: calc(100% - 16px); }
+  .topline-inner { gap: 5px; }
+  .topline-label-mobile { font-size: 8px; }
+  .topline-inner > div { font-size: 7px; }
+  .top-divider { margin-inline: 3px; }
+  .home-intro h1 { font-size: 30px; }
+  .home-actions .button { padding-inline: 9px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stage-photo::before, .stage-photo::after, .stage-sign-frame { animation: none; }
+}

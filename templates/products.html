@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% block title %}Companies We Deal In | Ekta Medicose{% endblock %}
+{% block extra_head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/products.css', v='companies-3') }}">
+{% endblock %}
+{% block content %}
+<section class="page-hero">
+  <div class="container">
+    <div class="eyebrow"><span class="eyebrow-line"></span> DISTRIBUTION COMPANIES</div>
+    <h1>Companies we<br><em>deal in.</em></h1>
+    <p>Retailers and business partners can enquire about products from the companies listed below.</p>
+    <div class="breadcrumbs"><a href="{{ url_for('home') }}">Home</a><span>/</span><span>Companies</span></div>
+  </div>
+</section>
+<section class="section section-light portfolio-section">
+  <div class="container">
+    <div class="catalog-tools">
+      <label class="search-box"><span>⌕</span><input id="company-search" type="search" placeholder="Search companies" aria-label="Search companies"></label>
+    </div>
+    <div class="portfolio-grid" id="portfolio-grid">
+      {% for item in products %}
+      <article class="portfolio-card reveal" data-search="{{ (item.name ~ ' ' ~ item.category)|lower }}">
+        <div class="portfolio-card-top">
+          <div class="company-logo-wrap">
+            <img class="company-logo" src="{{ item.logo }}" alt="{{ item.category }} company logo" loading="lazy" referrerpolicy="no-referrer" onerror="this.hidden=true;this.nextElementSibling.hidden=false">
+            <span class="company-logo-fallback" aria-hidden="true" hidden>{{ item.category[:1] }}</span>
+          </div>
+          <span class="portfolio-number">COMPANY 0{{ loop.index }}</span>
+        </div>
+        <h2>{{ item.name }}</h2>
+        <p>{{ item.description }}</p>
+        <div class="portfolio-card-bottom">
+          <a class="company-website" href="{{ item.website }}" target="_blank" rel="noopener noreferrer" aria-label="Visit {{ item.name }} official website">Company website <span>↗</span></a>
+          <a href="{{ url_for('enquiry', category=item.category, product=item.name) }}" aria-label="Enquire about {{ item.name }}">Enquire <span>↗</span></a>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+    <div class="empty-state" hidden>No companies match your search. Try another name.</div>
+    <div class="catalog-note"><span class="note-check">i</span><p>Company names are listed for business enquiries. Product availability and supply details are confirmed directly with Ekta Medicose. No online sales or consumer orders are taken on this website.</p></div>
+  </div>
+</section>
+{% endblock %}

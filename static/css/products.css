@@ -1,0 +1,15 @@
+.catalog-tools { justify-content: flex-start; }
+.catalog-tools .search-box { width: min(100%, 520px); }
+#portfolio-grid > [hidden] { display: none; }
+.company-logo-wrap { width: 58px; height: 42px; display: grid; place-items: center; position: relative; }
+.company-logo { width: 50px; height: 38px; object-fit: contain; }
+.company-logo-fallback { width: 38px; height: 38px; display: grid; place-items: center; border-radius: 50%; background: var(--blue-light); color: var(--blue); font-family: var(--display); font-size: 19px; font-weight: 800; }
+.company-logo-fallback[hidden] { display: none; }
+.portfolio-card-bottom { gap: 10px; }
+.portfolio-card-bottom a { white-space: nowrap; }
+.portfolio-card-bottom .company-website { font-weight: 600; color: #6d756d; }
+.portfolio-card-bottom .company-website:hover { color: var(--blue); }
+@media (max-width: 700px) {
+  .portfolio-card-bottom { align-items: flex-start; }
+  .portfolio-card-bottom a { font-size: 9px; }
+}

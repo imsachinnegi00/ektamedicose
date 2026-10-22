@@ -1,0 +1,10 @@
+{
+  "name": "Ekta Medicose",
+  "descriptor": "Pharmaceutical Distributors",
+  "address": "Shop No. 12, First Floor, Nirmal Market, Hospital Chowk, Karnal, Haryana 132001",
+  "city": "Karnal",
+  "state": "Haryana",
+  "pin": "132001",
+  "phones": ["98123-38065", "98712-18182"],
+  "brands": ["Pfizer", "AstraZeneca", "Eris", "Biocon", "Cipla", "Zorvia"]
+}

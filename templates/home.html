@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block extra_head %}<link rel="stylesheet" href="{{ url_for('static', filename='css/home.css', v='sage-1') }}">{% endblock %}
+{% block content %}
+<section class="home-hero">
+  <div class="container">
+    <div class="home-intro reveal">
+      <div class="eyebrow"><span class="eyebrow-line"></span> PHARMACEUTICAL DISTRIBUTION · KARNAL <span class="eyebrow-line"></span></div>
+      <h1>Good distribution<br>starts <span class="rotating-word" aria-live="polite">locally.</span></h1>
+      <p>Ekta Medicose connects pharmaceutical companies and their products with retailers and healthcare businesses in Karnal.</p>
+      <div class="home-actions"><a class="button button-primary" href="{{ url_for('products_page') }}">Explore companies <span>↗</span></a><a class="button button-outline" href="{{ url_for('enquiry') }}">Become a retail partner</a></div>
+    </div>
+
+    <div class="home-stage reveal">
+      <div class="stage-photo">
+        <span class="stage-photo-label"><i></i> KARNAL · LOCAL DISTRIBUTION</span>
+        <div class="stage-sign-frame"><img src="{{ url_for('static', filename='images/shop-sign-crop.png') }}" alt="Ekta Medicose Pharmaceutical Distributors sign"></div>
+      </div>
+      <aside class="stage-contact"><span class="stage-kicker">YOUR LOCAL CONNECTION</span><span class="stage-rule"></span><h2>Here for<br>business.</h2><p>Retailer and healthcare business enquiries are welcome.</p><a class="stage-address" href="https://maps.google.com/?q=Shop+No+12+Nirmal+Market+Hospital+Chowk+Karnal+132001" target="_blank" rel="noreferrer"><span class="stage-pin">⌖</span><span>{{ company.address }}</span><b>↗</b></a><a class="stage-phone" href="tel:+919812338065"><span>CALL OUR TEAM</span><b>{{ company.phones[0] }}</b><i>↗</i></a></aside>
+    </div>
+    <div class="hero-scroll"><span></span> SCROLL TO EXPLORE <span></span></div>
+  </div>
+</section>
+
+<section class="home-brands"><div class="container brands-inner"><span class="brands-kicker">COMPANIES WE DEAL IN</span><div class="brands-row">{% for brand in company.brands %}<span>{{ brand }}</span>{% endfor %}</div><a href="{{ url_for('products_page') }}" aria-label="Explore companies">↗</a></div></section>
+
+<section class="home-section portfolio-section-home"><div class="container"><div class="home-section-head reveal"><div class="eyebrow"><span class="eyebrow-line"></span> COMPANIES WE DEAL IN</div><h2>Make the right<br><em>connection.</em></h2><p>Explore the companies whose products we distribute. Ask our team about current availability and retailer requirements.</p></div><div class="portfolio-home-grid">{% for category in categories %}<a class="portfolio-home-card reveal" href="{{ url_for('products_page', category=category) }}"><span class="portfolio-card-number">0{{ loop.index }}</span><span class="portfolio-card-mark">+</span><strong>{{ category }}</strong><span class="portfolio-card-bottom"><small>COMPANY ENQUIRIES</small><i>↗</i></span></a>{% endfor %}</div><div class="home-center-link"><a class="text-link" href="{{ url_for('products_page') }}">View all companies <span>→</span></a></div><p class="portfolio-disclaimer">Company details and product availability are confirmed directly with Ekta Medicose. This website does not take consumer orders.</p></div></section>
+
+<section class="home-values"><div class="container"><div class="values-intro reveal"><div class="eyebrow eyebrow-light"><span class="eyebrow-line"></span> THE EKTA APPROACH</div><h2>Built on good<br><em>relationships.</em></h2><p>Our work begins with listening to the needs of local retailers and responding with care.</p></div><div class="home-values-grid"><article class="home-value reveal"><span>01</span><div class="value-symbol">↗</div><h3>Local connection</h3><p>A familiar point of contact at Hospital Chowk, Karnal.</p></article><article class="home-value reveal"><span>02</span><div class="value-symbol">◎</div><h3>Clear communication</h3><p>Ask directly about the companies and product details you need.</p></article><article class="home-value reveal"><span>03</span><div class="value-symbol">⌖</div><h3>Responsible practice</h3><p>We value careful, professional relationships throughout distribution.</p></article></div></div></section>
+
+<section class="home-about"><div class="container about-home-grid"><div class="about-home-image reveal"><img src="{{ url_for('static', filename='images/shop-office.jpeg') }}" alt="Ekta Medicose office workspace"><span>EKTA MEDICOSE <i>·</i> KARNAL, HARYANA</span></div><div class="about-home-copy reveal"><div class="eyebrow"><span class="eyebrow-line"></span> A LITTLE ABOUT US</div><h2>Rooted in Karnal.<br><em>Ready to connect.</em></h2><p>Find us at Shop No. 12, First Floor, Nirmal Market, Hospital Chowk. We welcome conversations with retailers and healthcare businesses looking for a local distribution partner.</p><a class="text-link" href="{{ url_for('about') }}">Get to know us <span>→</span></a><div class="about-home-location"><span class="location-icon">⌖</span><span><b>VISIT OUR LOCATION</b><small>{{ company.address }}</small></span></div></div></div></section>
+
+<section class="home-cta"><div class="container cta-home-inner reveal"><span class="cta-orbit orbit-a"></span><span class="cta-orbit orbit-b"></span><div class="eyebrow eyebrow-light"><span class="eyebrow-line"></span> START A CONVERSATION <span class="eyebrow-line"></span></div><h2>Let’s build a better<br><em>business connection.</em></h2><p>Tell us about your pharmacy or business. Our team in Karnal is ready to hear from you.</p><a class="button button-white" href="{{ url_for('enquiry') }}">Make a retailer enquiry <span>↗</span></a><div class="cta-phone"><a href="tel:+919812338065">{{ company.phones[0] }}</a><span>·</span><a href="tel:+919871218182">{{ company.phones[1] }}</a></div></div></section>
+{% endblock %}
